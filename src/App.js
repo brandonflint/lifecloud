@@ -3,7 +3,6 @@ import './App.css';
 
 import AddObjectForm from './components/AddObjectForm';
 import Objects from './components/Objects';
-import JSONViewer from './components/JSONViewer';
 
 class App extends Component {
   constructor() {
@@ -54,28 +53,21 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>{this.state.user.self.name}</h2>
+          <h2>Person</h2>
         </div>
         <div className="create-object">
           <AddObjectForm
-            curObjs={this.state.user}
+            user={this.state.user}
             addObj={this.addObj} 
           />
         </div>
         <Objects 
-         objects={this.state.user}
-         removeFromObjects={this.removeFromObjects}
+          user={this.state.user}
+          removeFromObjects={this.removeFromObjects}
         />
-
-        <JSONViewer json={this.state.user}></JSONViewer>
       </div>
     );
   }
 }
-/*
-        <Objects 
-         objects={this.state.user}
-         removeFromObjects={this.removeFromObjects}
-        />
-*/
+
 export default App;

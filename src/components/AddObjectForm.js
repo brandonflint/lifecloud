@@ -4,7 +4,7 @@ class AddObjectForm extends React.Component {
   constructor() {
     super();
 
-    this.createOptionsCategory = this.createOptionsCategory.bind(this);
+    this.dropDownOptions = this.dropDownOptions.bind(this);
     this.createDropDown = this.createDropDown.bind(this);
     this.test = this.test.bind(this);
   }
@@ -29,22 +29,26 @@ class AddObjectForm extends React.Component {
   }
   
   test() {
-    console.log(this.category.value);
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.pop();
+    var mystring = fruits.join(" * ");
+    console.log(mystring);
   }
   
-  createOptionsCategory() {
-    const namesArr = [];
-    Object.keys(this.props.curObjs)
-      .map((key) => namesArr.push( <option key={key} value={key}>{key}</option> ));
-    return(namesArr);
+  dropDownOptions() {
+    console.log(this.props.user)
+    return(
+      Object.keys(this.props.user)
+        .map( (key) => <option key={key} value={key}>{key}</option> )
+    );
   }
   
   createDropDown() {
     return (
       <div className="category-list">
-        <select ref={(input) => this.category = input} name="category" id="category">
-          <option value="new" selected>create new</option>
-          {this.createOptionsCategory()}
+        <select ref={(input) => this.category = input} name="category" id="category" defaultValue="new">
+          <option value="new">create new</option>
+          { this.dropDownOptions() }
         </select>
       </div>
     )
@@ -59,8 +63,8 @@ class AddObjectForm extends React.Component {
           <input ref={(input) => this.name = input} type="text" required placeholder="Name" />
           {this.renderFields()}
 
-          <button type="button" onClick={this.test}>Add field</button>
-          <button type="submit">Create</button>
+          <button type="button" onClick={this.test}>+</button>
+          <button type="submit">Finish</button>
         </form>
       </div>
     )

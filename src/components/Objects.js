@@ -7,20 +7,24 @@ class Objects extends React.Component {
   }
 
   renderObject(key) {
-    const obj = this.props.objects[key];
     const removeButton = <button className="button-remove" onClick={ () => this.props.removeFromObjects(key) }>&times;</button>
-    const keys = Object.keys(obj);
-
+    const obj = this.props.user[key];
+    //const keys = Object.keys(obj);
+    
     return (
-      <li key={key} className="item">
-        {keys[0]} {obj[keys[0]]}
-        {removeButton}
-      </li>
+      <div className="category">
+        <h2 className="category-title">{key}</h2>
+        {Object.keys(obj).map( (item) => 
+          <li className="item">
+            <strong>{item}</strong>{': '}{obj[item]}{removeButton}
+          </li>) 
+        }
+      </div>
     )
   }
 
   render() {
-    const objectIds = Object.keys(this.props.objects);
+    const objectIds = Object.keys(this.props.user);
     if (objectIds.length < 1) {
       return (
         <div></div>
@@ -30,7 +34,7 @@ class Objects extends React.Component {
     return (
         <div className="objects-view">
           <ul className="objects">
-            {Object.keys(this.props.objects).map(this.renderObject)}
+            {Object.keys(this.props.user).map(this.renderObject)}
           </ul>
         </div>
     )

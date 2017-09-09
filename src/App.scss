@@ -21,7 +21,7 @@
 }
 
 .create-object {
-  background-color: #222;
+  background-color: #eee;
   max-width: 500px;
   margin: 25px auto;
   padding: 1rem;
@@ -42,10 +42,15 @@
     border: 2px solid black;
     font-size: 20px;
     list-style-type: none;
-    margin: 20px auto;
+    margin: 8px 5%;
     padding: 1rem;
     .button-remove {
       float: right;
     }
+  }
+
+  .category {
+    background: #eee;
+    border: 2px solid black;
   }
 }
