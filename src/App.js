@@ -43,28 +43,22 @@ class App extends Component {
     this.setState({ user });
   }
 
-  removeFromObjects(key) {
+  removeFromObjects(key, item) {
     const user = {...this.state.user};
-    delete user[key];
+    //console.log(user[key][item]);
+    delete user[key][item];
+    if (Object.keys(user[key]).length === 0 && user[key].constructor === Object) {
+      delete user[key];
+    }
     this.setState({ user });
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Person</h2>
-        </div>
-        <div className="create-object">
-          <AddObjectForm
-            user={this.state.user}
-            addObj={this.addObj} 
-          />
-        </div>
-        <Objects 
-          user={this.state.user}
-          removeFromObjects={this.removeFromObjects}
-        />
+        <div className="App-header"> <h2>Person</h2> </div>
+        <AddObjectForm user={this.state.user} addObj={this.addObj} />
+        <Objects user={this.state.user} removeFromObjects={this.removeFromObjects} />
       </div>
     );
   }

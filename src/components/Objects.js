@@ -7,16 +7,15 @@ class Objects extends React.Component {
   }
 
   renderObject(key) {
-    const removeButton = <button className="button-remove" onClick={ () => this.props.removeFromObjects(key) }>&times;</button>
     const obj = this.props.user[key];
-    //const keys = Object.keys(obj);
-    
+
     return (
       <div className="category">
         <h2 className="category-title">{key}</h2>
         {Object.keys(obj).map( (item) => 
           <li className="item">
-            <strong>{item}</strong>{': '}{obj[item]}{removeButton}
+            <strong>{item}</strong>{': '}{obj[item]}
+            <button className="button-remove" onClick={ () => this.props.removeFromObjects(key, item) }>&times;</button>
           </li>) 
         }
       </div>
@@ -33,9 +32,7 @@ class Objects extends React.Component {
 
     return (
         <div className="objects-view">
-          <ul className="objects">
-            {Object.keys(this.props.user).map(this.renderObject)}
-          </ul>
+          {Object.keys(this.props.user).map(this.renderObject)}
         </div>
     )
   }

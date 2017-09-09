@@ -56,7 +56,7 @@ class AddObjectForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="create-object">
         <form ref={(input) => this.objectForm = input} onSubmit={(e) => this.createObj(e)}>
 
           {this.createDropDown()}
