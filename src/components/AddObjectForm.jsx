@@ -23,14 +23,9 @@ class AddObjectForm extends React.Component {
   }
 
   dropDownOptions() {
-    for (const prop in this.props.user) {
-      console.log(prop)
-    }
-    
     return (
-      console.log('a')
-      //Object.keys(this.props.user)
-      //  .map(key => <option key={key} value={key}>{key}</option>)
+      Object.keys(this.props.user)
+        .map(key => <option key={key} value={key}>{key}</option>)
     );
   }
 
