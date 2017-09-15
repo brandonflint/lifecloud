@@ -15,8 +15,8 @@ class Objects extends React.Component {
         {Object.keys(category).map(item =>
           (<li className="item">
             <strong>{item}</strong>{': '}{category[item]}
-            <button className="button-remove" onClick={ () => this.props.removeFromUser(key, item) }>&times;</button>
-          </li>)
+            <button className="button-remove" onClick={() => this.props.removeFromUser(key, item)}>&times;</button>
+          </li>))
         }
       </div>
     );
